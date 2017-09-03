@@ -20,6 +20,16 @@ module ResqueEtl
       base.class_eval do
 
         get '/etlsettings' do
+          t = Tenant.first
+          ts = t.tenant_etl_setting
+          Rails.logger.info ts.inspect
+          gs = t.good_data_etl_setting
+          Rails.logger.info gs.inspect
+          t.data_sources.each do |d|
+            Rails.logger.info d.name
+            ds = d.data_source_etl_setting
+            Rails.logger.info ds.inspect
+          end
           erb File.read(ResqueEtl::Server.erb_path('etl.erb'))
         end
 
