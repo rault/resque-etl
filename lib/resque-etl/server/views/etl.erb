@@ -1,3 +1,4 @@
+<% settings = tenant_settings %>
 
 <h1>Etl Settings</h1>
 
@@ -5,11 +6,33 @@
 
 <table>
   <tr>
-    <th>Tenant</th>
-    <th>Enabled</th>
-    <th>Data Source Retries</th>
-    <th>Data Source Retry Delay</th>
+    <th>Name</th>
+    <th>Schema Name</th>
+    <th>Resque Enabled</th>
+    <th>Max Failed Data Sources</th>
+    <th>GoodData Enabled</th>
+    <th>Domain</th>
+    <th>User</th>
+    <th>Password</th>
+    <th>Project ID</th>
+    <th>Schedule ID</th>
+    <th></th>
   </tr>
+  <% settings.each do |s| %>
+    <tr>
+      <td><%= s[:name] %></td>
+      <td><%= s[:schema_name] %></td>
+      <td><%= s[:resque_enabled] %></td>
+      <td><%= s[:max_failed_data_sources] %></td>
+      <td><%= s[:good_data_enabled] %></td>
+      <td><%= s[:domain] %></td>
+      <td><%= s[:api_user] %></td>
+      <td><%= s[:api_password] %></td>
+      <td><%= s[:project_id] %></td>
+      <td><%= s[:schedule_id] %></td>
+      <td></td>
+    </tr>
+  <% end %>
 </table>
 
 </div>

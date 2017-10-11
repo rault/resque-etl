@@ -6,6 +6,7 @@ require 'resque-etl'
 module ResqueEtl
   module Server
     include Resque::Etl::Helper
+    include Resque::Plugins::Etl
 
     def self.erb_path(filename)
       File.join(File.dirname(__FILE__), 'server', 'views', filename)
